@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fanzines · Devanada</title>
+  <meta name="description" content="Galería de fanzines de Devanada: vídeo de presentación y todas las páginas interiores.">
+  <meta name="theme-color" content="#1d4e96">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <a href="../index.html" class="btn-back">← Volver a la página principal</a>
+    <div class="header-brand">
+      <img src="../DEVANADA.webp" alt="Devanada" class="logo" loading="lazy">
+    </div>
+  </header>
+
+  <main id="contenido">
+    <h1 class="section-title">Vista final de un Fanzine</h1>
+
+    <video class="featured-video" src="sonic.mp4" controls preload="metadata">
+      Tu navegador no soporta la reproducción de vídeo.
+    </video>
+
+    <h2 class="section-title">Historietas de los Fanzines</h2>
+
+    <!--
+      La cuadrícula se rellena automáticamente desde script.js
+      (array FANZINE_PAGES). El distintivo "n/20" se calcula
+      solo según cuántos archivos tenga el array: no hace falta
+      escribirlo a mano ni tocar este HTML.
+    -->
+    <div class="gallery-grid gallery-grid--numbered" id="fanzine-grid"></div>
+  </main>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

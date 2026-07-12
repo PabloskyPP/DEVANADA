@@ -1,0 +1,565 @@
+/* ============================================================
+   DEVANADA — styles.css
+   Hoja de estilos ÚNICA y compartida por todas las páginas
+   (index.html + galeria-stickers/ + galeria-fanzines/ +
+   otras-actividades/). No dupliques este archivo: enlázalo
+   siempre con ruta relativa ("styles.css" o "../styles.css").
+   ============================================================
+   Índice:
+   1. Reset básico
+   2. Tokens de diseño (variables)
+   3. Accesibilidad y utilidades globales
+   4. Tipografía base
+   5. Cabecera fija + botón "Volver"
+   6. Hero / introducción
+   7. Títulos de sección
+   8. Cuadrícula de productos (index)
+   9. Sección de contacto
+   10. Galerías (pegatinas / fanzines)
+   11. Vídeo destacado (fanzines)
+   12. Otras actividades
+   13. Cajas "próximamente"
+   14. Responsive
+   15. Movimiento reducido
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. RESET BÁSICO
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body,
+h1, h2, h3,
+p, figure {
+  margin: 0;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* ------------------------------------------------------------
+   2. TOKENS DE DISEÑO
+   Cambia aquí color/tipografía/espaciado y se propaga a todo
+   el sitio.
+   ------------------------------------------------------------ */
+:root {
+  /* Color */
+  --color-bg: #ede3c8;          /* fondo sepia pálido (obligatorio) */
+  --color-bg-card: #f7f0dc;     /* superficie de tarjetas y galerías */
+  --color-header: #1d4e96;      /* azul de la cabecera (obligatorio) */
+  --color-header-dark: #123765; /* azul oscuro para bordes/sombras */
+  --color-ink: #2b2013;         /* texto principal / "tinta" */
+  --color-ink-soft: #5b4e3a;    /* texto secundario */
+  --color-accent: #c3d62e;      /* verde ácido: acento de firma visual */
+  --color-accent-2: #d6483b;    /* rojo cómic: avisos / "próximamente" */
+  --color-white: #fffdf6;
+
+  /* Tipografía */
+  --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout */
+  --header-height: 92px;
+  --radius-card: 14px;
+  --max-width: 1100px;
+
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+
+  /* Movimiento (200–300ms según requisito) */
+  --transition-fast: 220ms ease;
+  --transition-medium: 280ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   3. ACCESIBILIDAD Y UTILIDADES GLOBALES
+   ------------------------------------------------------------ */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  padding: 0.6rem 1rem;
+  z-index: 999;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus,
+button:focus,
+[tabindex]:focus {
+  outline: 3px solid var(--color-accent-2);
+  outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   4. TIPOGRAFÍA BASE
+   ------------------------------------------------------------ */
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  /* Textura de trama sutil (halftone) que unifica todas las páginas */
+  background-image: radial-gradient(rgba(43, 32, 19, 0.06) 1px, transparent 1.5px);
+  background-size: 14px 14px;
+  padding-top: var(--header-height); /* compensa la cabecera fija */
+  line-height: 1.6;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+
+/* ------------------------------------------------------------
+   5. CABECERA FIJA + BOTÓN "VOLVER"
+   Misma estructura HTML/CSS en todas las páginas: solo cambia
+   si incluyen o no el botón .btn-back.
+   ------------------------------------------------------------ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-height);
+  background-color: var(--color-header);
+  border-bottom: 4px solid var(--color-header-dark);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  overflow: hidden;
+}
+
+/* Trama sutil también en la cabecera, para reforzar el aspecto impreso */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.5px, transparent 1.6px);
+  background-size: 12px 12px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.site-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.logo {
+  --logo-width: 600px;
+  --logo-height: 180px;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+}
+
+.btn-back {
+  position: absolute;
+  left: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  white-space: nowrap;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+.btn-back:hover,
+.btn-back:focus {
+  cursor: pointer;
+  background-color: var(--color-white);
+  transform: translateY(calc(-50% - 2px));
+  box-shadow: 4px 5px 0 var(--color-ink);
+}
+
+
+/* ------------------------------------------------------------
+   6. HERO / INTRODUCCIÓN (index)
+   ------------------------------------------------------------ */
+.hero {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-lg) 0 var(--space-sm);
+  text-align: center;
+}
+
+.hero__tagline {
+  font-size: 1.15rem;
+  color: var(--color-ink-soft);
+  font-style: italic;
+}
+
+
+/* ------------------------------------------------------------
+   7. TÍTULOS DE SECCIÓN
+   ------------------------------------------------------------ */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 5px;
+  background-color: var(--color-accent);
+  margin: 0.6rem auto 0;
+  border-radius: 3px;
+}
+
+.section-title--inverse {
+  color: var(--color-white);
+  margin-top: 0;
+}
+
+
+/* ------------------------------------------------------------
+   8. CUADRÍCULA DE PRODUCTOS (index) — 2 columnas
+   ------------------------------------------------------------ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
+
+.product-card {
+  background-color: var(--color-bg-card);
+  border: 3px solid var(--color-ink);
+  border-radius: var(--radius-card);
+  padding: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 5px 5px 0 var(--color-ink);
+  rotate: -1deg;
+  transition: transform var(--transition-medium),
+              box-shadow var(--transition-medium),
+              rotate var(--transition-medium);
+}
+
+.product-grid .product-card:nth-child(even) {
+  rotate: 1deg;
+}
+
+.product-card:hover,
+.product-card:focus {
+  rotate: 0deg;
+}
+
+.product-card:not(.product-card--static):hover,
+.product-card:not(.product-card--static):focus {
+  cursor: pointer;
+  transform: translateY(-6px);
+  box-shadow: 8px 10px 0 var(--color-ink);
+}
+
+.product-card__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.product-card__title small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+  font-size: 0.7rem;
+  color: var(--color-ink-soft);
+  margin-top: 0.25rem;
+  letter-spacing: normal;
+}
+
+/* Contenedor de imagen con intercambio en hover mediante crossfade CSS puro */
+.product-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: calc(var(--radius-card) - 6px);
+  background-color: var(--color-white);
+}
+
+.product-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity var(--transition-medium);
+}
+
+.product-card__media .img-hover {
+  opacity: 0;
+}
+
+.product-card:hover .img-default,
+.product-card:focus .img-default {
+  opacity: 0;
+}
+
+.product-card:hover .img-hover,
+.product-card:focus .img-hover {
+  opacity: 1;
+}
+
+
+/* ------------------------------------------------------------
+   9. SECCIÓN DE CONTACTO
+   ------------------------------------------------------------ */
+.contact-section {
+  background-color: var(--color-header);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  margin: 0 calc(-1 * var(--space-md));
+}
+
+.contact-section p {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-section a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.contact-section a:hover,
+.contact-section a:focus {
+  color: var(--color-white);
+}
+
+
+/* ------------------------------------------------------------
+   10. GALERÍAS (pegatinas / fanzines)
+   ------------------------------------------------------------ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--color-white);
+  border: 3px solid var(--color-ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--color-ink);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gallery-grid img:hover,
+.gallery-grid img:focus {
+  cursor: pointer;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+/* Numeración "n/total" sobre cada página del fanzine */
+.fanzine-page {
+  position: relative;
+}
+
+.fanzine-page__badge {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  z-index: 1;
+}
+
+
+/* ------------------------------------------------------------
+   11. VÍDEO DESTACADO (fanzines)
+   ------------------------------------------------------------ */
+.featured-video {
+  max-width: 720px;
+  width: 100%;
+  margin: var(--space-sm) auto var(--space-lg);
+  border: 4px solid var(--color-ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+  background-color: #000;
+}
+
+
+/* ------------------------------------------------------------
+   12. OTRAS ACTIVIDADES
+   ------------------------------------------------------------ */
+.caricaturas-row {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding-bottom: var(--space-md);
+  margin-top: -0.5 rem;
+  scroll-snap-type: x proximity;
+}
+
+.caricaturas-row img {
+  flex: 0 0 200px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-color: var(--color-white);
+  border: 3px solid var(--color-ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--color-ink);
+  scroll-snap-align: start;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.caricaturas-row img:hover,
+.caricaturas-row img:focus {
+  cursor: pointer;
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+.tablon-image {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto var(--space-lg);
+  border: 4px solid var(--color-ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+
+/* ------------------------------------------------------------
+   13. CAJAS "PRÓXIMAMENTE"
+   ------------------------------------------------------------ */
+.coming-soon-box {
+  border: 2px dashed var(--color-accent-2);
+  border-radius: 10px;
+  padding: var(--space-sm);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-accent-2);
+  text-align: center;
+  width: 100%;
+}
+
+.coming-soon-box--center {
+  max-width: 480px;
+  margin: 0 auto var(--space-lg);
+}
+
+
+/* ------------------------------------------------------------
+   14. RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-back {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   15. MOVIMIENTO REDUCIDO
+   Respeta la preferencia del sistema del usuario.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

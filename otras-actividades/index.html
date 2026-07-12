@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otras actividades · Devanada</title>
+  <meta name="description" content="Caricaturas digitales, tablón de cómic colaborativo y actividades presenciales de Devanada.">
+  <meta name="theme-color" content="#1d4e96">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera fija: en index.html solo muestra el logo centrado -->
+  <header class="site-header">
+    <a href="../index.html" class="btn-back">← Volver a la página principal</a>
+    <div class="header-brand">
+    </div>
+    <img src="DEVANADA.png" alt="Devanada" class="logo" loading="lazy">
+  </header>
+
+  <main id="contenido">
+
+    <h1 class="section-title">Caricaturas digitales</h1>
+    <!--
+      Fila rellenada automáticamente desde script.js
+      (array CARICATURAS).
+    -->
+    <div class="caricaturas-row" id="caricaturas-row" style="transform: scale(0.4); margin-top: -430px; margin-bottom: -300px;"></div>
+
+    <h2 class="section-title">Tablón de cómic colaborativo</h2>
+    <img
+      src="tablon.png"
+      alt="Tablón de cómic colaborativo del festival"
+      class="tablon-image"
+      loading="lazy"
+    >
+
+    <h2 class="section-title">Más actividades</h2>
+    <div class="coming-soon-box coming-soon-box--center">
+      Más actividades a revelar próximamente...
+    </div>
+
+  </main>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pegatinas · Devanada</title>
+  <meta name="description" content="Galería completa de pegatinas de Devanada.">
+  <meta name="theme-color" content="#1d4e96">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera fija: en index.html solo muestra el logo centrado -->
+  <header class="site-header">
+    <a href="../index.html" class="btn-back">← Volver a la página principal</a>
+    <div class="header-brand">
+    </div>
+    <img src="DEVANADA.png" alt="Devanada" class="logo" loading="lazy">
+  </header>
+
+  <main id="contenido">
+    <h1 class="section-title">Pegatinas</h1>
+
+    <!--
+      La cuadrícula se rellena automáticamente desde script.js
+      (array STICKERS). Para añadir o quitar pegatinas, edita
+      ese array: no hace falta tocar este HTML.
+    -->
+    <div class="gallery-grid" id="stickers-grid"></div>
+  </main>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>
