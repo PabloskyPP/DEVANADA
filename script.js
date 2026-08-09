@@ -10,7 +10,7 @@
    que necesita existen en la página actual (document.getElementById).
    Si no existen, la función termina de inmediato sin hacer nada.
    Gracias a esto, este mismo archivo puede incluirse en
-   index.html y en las tres subpáginas sin generar errores ni
+   index.html y en las cuatro subpáginas sin generar errores ni
    código duplicado.
    ============================================================ */
 
@@ -77,7 +77,7 @@ const FANZINE_PAGES = [
   // La numeración "n/total" del badge se recalcula sola.
 ];
 
-// galeria-prints/  → prints, se muestran en fila
+// galeria-prints/  → se muestran en orden y disposición vertical los prints
 const PRINTS = [
   'print1.jpg',
   'print2.jpg',
@@ -238,7 +238,7 @@ function initPrintsGallery() {
     const figure = document.createElement('figure');
     figure.className = 'print-page';
 
-    const img = createLazyImage(file, `Página ${pageNumber} de ${total} del print`);
+    const img = createLazyImage(file, `Print ${pageNumber} de ${total} del Devanada`);
 
     const badge = document.createElement('span');
     badge.className = 'print__badge';
@@ -257,7 +257,7 @@ function initPrintsGallery() {
 
 
 /**
- * Abre un modal expandido al clicar en una página del print
+ * Abre un modal expandido al clicar en una página del fanzine
  * @param {HTMLImageElement} img - la imagen clickeada
  */
 function openPrintModal(img) {
@@ -284,6 +284,7 @@ function openPrintModal(img) {
     max-width: 90vw;
     max-height: 90vh;
     object-fit: contain;
+    transform: rotate(-90deg);
   `;
 
   modal.appendChild(expandedImg);
@@ -326,6 +327,6 @@ function initCaricaturasRow() {
 document.addEventListener('DOMContentLoaded', () => {
   initStickersGallery();
   initFanzinesGallery();
-  initPrintsGallery
+  initPrintsGallery();
   initCaricaturasRow();
 });
