@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pegatinas · Devanada</title>
-  <meta name="description" content="Galería completa de pegatinas de Devanada.">
+  <title>Prints · Devanada</title>
+  <meta name="description" content="Galería de prints de Devanada.">
   <meta name="theme-color" content="#1d4e96">
   <link rel="stylesheet" href="../styles.css">
 </head>
@@ -22,23 +22,29 @@
 
   <main id="contenido">
     <div class="header-container" style="display: flex; align-items: center; justify-content: center; gap: 40px;">
-      <h1 class="section-title">Pegatinas</h1>
-      
+      <h1 class="section-title">Impresiones</h1>
+
       <!-- Yellow circle with price info and shadow -->
       <div class="price-circle" style="width: 180px; height: 180px; background-color: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); flex-shrink: 0; border: 3px solid black;">
         <p style="font-weight: bold; font-size: 16px; text-align: center; margin: 0;">
-          1 sticker x 2 euros<br>
-          3 x 5 euros
+          1 print x 12 euros
         </p>
       </div>
     </div>
 
+      <div class="print-text" style="text-align: center; margin: 20px 0;">
+        <p class="hero__tagline" style="border: 2px solid black; padding: 15px 20px; display: inline-block;">
+          Impresiones a tamaño A4 con papel duro de cartulina.
+        </p>
+      </div>
+
+
     <!--
       La cuadrícula se rellena automáticamente desde script.js
-      (array STICKERS). Para añadir o quitar pegatinas, edita
+      (array PRINTS). Para añadir o quitar prints, edita
       ese array: no hace falta tocar este HTML.
     -->
-    <div class="gallery-grid" id="stickers-grid"></div>
+    <div class="gallery-grid" id="prints-grid"></div>
   </main>
 
   <script src="../script.js" defer></script>

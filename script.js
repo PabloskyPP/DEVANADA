@@ -59,8 +59,8 @@ const STICKERS = [
   'sticker30.png',
   'sticker31.png',
   'sticker32.png',
-  'sticker33.png',
-  'sticker34.png',
+  'sticker33.jpg',
+  'sticker34.jpg',
   // Añade aquí más pegatinas, p. ej.: 'sticker09.webp',
 ];
 
@@ -71,9 +71,16 @@ const FANZINE_PAGES = [
   'fanzine09.png', 'fanzine10.png', 'fanzine11.png', 'fanzine12.png',
   'fanzine13.png', 'fanzine14.png', 'fanzine15.png', 'fanzine16.png',
   'fanzine17.png', 'fanzine18.png', 'fanzine19.png', 'fanzine20.png',
-  'fanzine21.png',
+  'fanzine21.png', 'fanzine22.jpg', 'fanzine23.jpg', 'fanzine24.png',
+  'fanzine25.png', 'fanzine26.png'
   // Si el fanzine tiene más o menos páginas, añade/quita líneas aquí.
   // La numeración "n/total" del badge se recalcula sola.
+];
+
+// galeria-prints/  → prints, se muestran en fila
+const PRINTS = [
+  'print1.jpg',
+  'print2.jpg',
 ];
 
 // otras-actividades/  → caricaturas digitales, se muestran en fila
@@ -213,7 +220,86 @@ function openFanzineModal(img) {
 
 
 /* ------------------------------------------------------------
-   5. CARICATURAS DIGITALES (otras-actividades)
+   5. GALERÍA DE PRINTS
+   Se activa solo si existe #prints-grid en la página
+   (galeria-prints/index.html). Cada imagen lleva encima un
+   distintivo "n/total" generado automáticamente.
+   ------------------------------------------------------------ */
+function initPrintsGallery() {
+  const grid = document.getElementById('prints-grid');
+  if (!grid) return;
+
+  const total = PRINTS.length;
+  const fragment = document.createDocumentFragment();
+
+  PRINTS.forEach((file, index) => {
+    const pageNumber = index + 1;
+
+    const figure = document.createElement('figure');
+    figure.className = 'print-page';
+
+    const img = createLazyImage(file, `Página ${pageNumber} de ${total} del print`);
+
+    const badge = document.createElement('span');
+    badge.className = 'print__badge';
+    badge.textContent = `${pageNumber}/${total}`;
+
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => openPrintModal(img));
+
+    figure.appendChild(img);
+    figure.appendChild(badge);
+    fragment.appendChild(figure);
+  });
+
+  grid.appendChild(fragment);
+}
+
+
+/**
+ * Abre un modal expandido al clicar en una página del print
+ * @param {HTMLImageElement} img - la imagen clickeada
+ */
+function openPrintModal(img) {
+  const modal = document.createElement('div');
+  modal.className = 'print-modal';
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+  `;
+
+  const expandedImg = document.createElement('img');
+  expandedImg.src = img.src;
+  expandedImg.alt = img.alt;
+  expandedImg.style.cssText = `
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+  `;
+
+  modal.appendChild(expandedImg);
+  document.body.appendChild(modal);
+
+  modal.addEventListener('click', () => {
+    modal.remove();
+  });
+
+  expandedImg.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+}
+
+/* ------------------------------------------------------------
+   6. CARICATURAS DIGITALES (otras-actividades)
    Se activa solo si existe #caricaturas-row en la página
    (otras-actividades/index.html).
    ------------------------------------------------------------ */
@@ -233,12 +319,13 @@ function initCaricaturasRow() {
 
 
 /* ------------------------------------------------------------
-   6. INICIALIZACIÓN GENERAL
+   7. INICIALIZACIÓN GENERAL
    Se ejecuta en TODAS las páginas. Cada función decide por sí
    misma si tiene trabajo que hacer.
    ------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
   initStickersGallery();
   initFanzinesGallery();
+  initPrintsGallery
   initCaricaturasRow();
 });

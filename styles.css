@@ -450,6 +450,25 @@ main {
   z-index: 1;
 }
 
+.print-page {
+  position: relative;
+}
+
+.print__badge {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  z-index: 1;
+}
+
 
 /* ------------------------------------------------------------
    11. VÍDEO DESTACADO (fanzines)
