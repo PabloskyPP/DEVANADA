@@ -75,7 +75,7 @@ const STICKERS = [
 // galeria-fanzines/  → páginas interiores del fanzine, EN ORDEN
 const FANZINE_PAGES = [
   'fanzine01.png', 'fanzine02.png', 'fanzine03.png', 'fanzine04.png',
-  'fanzine05.png', 'fanzine06.png', 'fanzine07.png',
+  'fanzine05.png', 'fanzine06.png', 'fanzine07.png', 'fanzine08.png',
   'fanzine09.png', 'fanzine10.png', 'fanzine11.png', 'fanzine12.png',
   'fanzine13.png', 'fanzine14.png', 'fanzine15.png', 'fanzine16.png',
   'fanzine17.png', 'fanzine18.png', 'fanzine19.png', 'fanzine20.png',
