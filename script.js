@@ -26,7 +26,7 @@
 
 // galeria-stickers/  → una entrada por cada pegatina individual
 const STICKERS = [
-  'sitcker000.jpg'
+  'sticker000.jpg',
   'sticker00.png',
   'sticker01.png',
   'sticker02.png',
@@ -90,7 +90,7 @@ const PRINTS = [
   'print1.jpg',
   'print2.jpg',
   'print3.jpg',
-  'print4.jpg'
+  'print4.jpg',
 ];
 
 // otras-actividades/  → caricaturas digitales, se muestran en fila
