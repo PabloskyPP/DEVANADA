@@ -69,6 +69,12 @@ const STICKERS = [
   'sticker39.jpg',
   'sticker40.jpg',
   'sticker41.jpg',
+  'sticker42.png',
+  'sticker43.png',
+  'sticker44.png',
+  'sticker45.png',
+  'sticker46.png',
+  'sticker47.png',
   // Añade aquí más pegatinas, p. ej.: 'sticker09.webp',
 ];
 
