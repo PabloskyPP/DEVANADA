@@ -26,7 +26,6 @@
 
 // galeria-stickers/  → una entrada por cada pegatina individual
 const STICKERS = [
-  'sticker000.jpg',
   'sticker00.png',
   'sticker01.png',
   'sticker02.png',
@@ -69,12 +68,12 @@ const STICKERS = [
   'sticker39.jpg',
   'sticker40.jpg',
   'sticker41.jpg',
-  'sticker42.png',
-  'sticker43.png',
-  'sticker44.png',
-  'sticker45.png',
-  'sticker46.png',
-  'sticker47.png',
+  'sticker42.jpgg',
+  'sticker43.jpg',
+  'sticker44.jpg',
+  'sticker45.jpg',
+  'sticker46.jpg',
+  'sticker47.jpg',
   // Añade aquí más pegatinas, p. ej.: 'sticker09.webp',
 ];
 
@@ -85,8 +84,7 @@ const FANZINE_PAGES = [
   'fanzine09.png', 'fanzine10.png', 'fanzine11.png', 'fanzine12.png',
   'fanzine13.png', 'fanzine14.jpg', 'fanzine15.png', 'fanzine16.png',
   'fanzine17.png', 'fanzine18.png', 'fanzine19.png', 'fanzine20.png',
-  'fanzine21.png', 'fanzine22.jpg', 'fanzine23.jpg', 'fanzine24.png',
-  'fanzine25.jpg',
+  'fanzine21.png', 'fanzine22.jpg', 'fanzine23.jpg',
   // Si el fanzine tiene más o menos páginas, añade/quita líneas aquí.
   // La numeración "n/total" del badge se recalcula sola.
 ];
