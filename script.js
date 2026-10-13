@@ -68,7 +68,7 @@ const STICKERS = [
   'sticker39.jpg',
   'sticker40.jpg',
   'sticker41.jpg',
-  'sticker42.jpgg',
+  'sticker42.jpg',
   'sticker43.jpg',
   'sticker44.jpg',
   'sticker45.jpg',
